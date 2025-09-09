@@ -8,6 +8,10 @@ public class PlayerController : MonoBehaviour
   [SerializeField]
   GameObject boltPrefab;
 
+  float timeSinceLastShot = 0;
+  [SerializeField]
+  float timeBetweenShots = 0.5f;
+
   void Update()
   {
     float inputX = Input.GetAxisRaw("Horizontal");
@@ -18,9 +22,17 @@ public class PlayerController : MonoBehaviour
 
     transform.Translate(movement * speed * Time.deltaTime);
 
-    if (Input.GetAxisRaw("Fire1") > 0)
+    // =========================================================================
+    // Skjuta
+    // -------------------------------------------------------------------------
+
+    // timeBetweenShots = timeBetweenShots + Time.deltaTime;
+    timeSinceLastShot += Time.deltaTime;
+
+    if (Input.GetAxisRaw("Fire1") > 0 && timeSinceLastShot > timeBetweenShots)
     {
       Instantiate(boltPrefab, transform.position, Quaternion.identity);
+      timeSinceLastShot = 0;
     }
   }
 }

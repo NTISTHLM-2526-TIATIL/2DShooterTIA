@@ -1,0 +1,13 @@
+using UnityEngine;
+
+public class EnemySpawner : MonoBehaviour
+{
+  [SerializeField]
+  GameObject enemyPrefab;
+
+  // Update is called once per frame
+  void Update()
+  {
+    Instantiate(enemyPrefab);
+  }
+}
