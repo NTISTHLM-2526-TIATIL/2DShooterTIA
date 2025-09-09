@@ -2,10 +2,11 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
-  void Start()
-  {
+  [SerializeField]
+  float speed = 0.02f;
 
-  }
+  [SerializeField]
+  GameObject boltPrefab;
 
   void Update()
   {
@@ -15,6 +16,11 @@ public class PlayerController : MonoBehaviour
     Vector2 movement = Vector2.right * inputX
                      + Vector2.up * inputY;
 
-    transform.Translate(movement * 0.02f);
+    transform.Translate(movement * speed * Time.deltaTime);
+
+    if (Input.GetAxisRaw("Fire1") > 0)
+    {
+      Instantiate(boltPrefab, transform.position, Quaternion.identity);
+    }
   }
 }
