@@ -5,6 +5,9 @@ public class EnemyController : MonoBehaviour
   [SerializeField]
   float speed;
 
+  [SerializeField]
+  GameObject boomPrefab;
+
   void Start()
   {
     Vector2 newPos = new();
@@ -14,7 +17,6 @@ public class EnemyController : MonoBehaviour
     transform.position = newPos;
   }
 
-  // Update is called once per frame
   void Update()
   {
     Vector2 movement = Vector2.down * speed;
@@ -24,5 +26,11 @@ public class EnemyController : MonoBehaviour
     {
       Destroy(this.gameObject);
     }
+  }
+
+  void OnTriggerEnter2D(Collider2D collision)
+  {
+    Instantiate(boomPrefab, transform.position, Quaternion.identity);
+    Destroy(this.gameObject);
   }
 }

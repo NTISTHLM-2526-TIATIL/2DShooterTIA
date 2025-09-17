@@ -156,6 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   enemyPrefab: {fileID: 1455718659814362, guid: bf43fe3ed09cec246b4f2f367f9817fa,
     type: 3}
+  timeBetweenEnemies: 0.5
 --- !u!4 &228136495
 Transform:
   m_ObjectHideFlags: 0
@@ -445,9 +446,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 540eadf1d9100384f85990e58c12938a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  speed: 3.5
+  speed: 5
   boltPrefab: {fileID: 1287502262990996, guid: 4dd15c7fe51711c48ba135fef149bbf8, type: 3}
-  timeBetweenShots: 0.5
+  timeBetweenShots: 0.3
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

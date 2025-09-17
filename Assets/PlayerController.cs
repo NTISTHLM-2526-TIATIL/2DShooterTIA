@@ -26,7 +26,6 @@ public class PlayerController : MonoBehaviour
     // Skjuta
     // -------------------------------------------------------------------------
 
-    // timeBetweenShots = timeBetweenShots + Time.deltaTime;
     timeSinceLastShot += Time.deltaTime;
 
     if (Input.GetAxisRaw("Fire1") > 0 && timeSinceLastShot > timeBetweenShots)
