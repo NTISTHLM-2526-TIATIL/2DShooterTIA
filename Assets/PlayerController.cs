@@ -30,6 +30,12 @@ public class PlayerController : MonoBehaviour
 
     if (Input.GetAxisRaw("Fire1") > 0 && timeSinceLastShot > timeBetweenShots)
     {
+      AudioSource speaker = GetComponent<AudioSource>();
+
+      speaker.Play();
+
+      // GetComponent<AudioSource>().Play();
+
       Instantiate(boltPrefab, transform.position, Quaternion.identity);
       timeSinceLastShot = 0;
     }
