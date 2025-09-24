@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerController : MonoBehaviour
 {
@@ -11,6 +12,20 @@ public class PlayerController : MonoBehaviour
   float timeSinceLastShot = 0;
   [SerializeField]
   float timeBetweenShots = 0.5f;
+
+  float currentHP = 0;
+  [SerializeField]
+  float maxHP = 3;
+
+  [SerializeField]
+  Slider hpSlider;
+
+  void Start()
+  {
+    currentHP = maxHP;
+    hpSlider.maxValue = maxHP;
+    hpSlider.value = currentHP;
+  }
 
   void Update()
   {
@@ -38,6 +53,16 @@ public class PlayerController : MonoBehaviour
 
       Instantiate(boltPrefab, transform.position, Quaternion.identity);
       timeSinceLastShot = 0;
+    }
+  }
+
+  void OnTriggerEnter2D(Collider2D collision)
+  {
+    if (collision.gameObject.tag == "enemy")
+    {
+      currentHP--;
+      print("ouch " + currentHP);
+      hpSlider.value = currentHP;
     }
   }
 }
